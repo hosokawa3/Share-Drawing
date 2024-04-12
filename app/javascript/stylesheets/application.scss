@@ -104,19 +104,3 @@ h1 {
  ul {
   list-style: none;
 }
-
-@media screen and (max-width: 1024px) {
-
-}
-
-@media screen and (max-width: 768px) {
-  h1 {
-    font-size: 60px;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  h1 {
-    font-size: 40px;
-  }
-}
