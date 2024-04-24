@@ -1,4 +1,5 @@
 class Public::PostCommentsController < ApplicationController
+  before_action :is_matching_login_end_user, only: [:destroy]
 
   def create
     @post = Post.find(params[:post_id])
@@ -16,5 +17,12 @@ class Public::PostCommentsController < ApplicationController
 
   def post_comment_params
     params.require(:post_comment).permit(:comment)
+  end
+
+  def is_matching_login_end_user
+    comment = PostComment.find(params[:id])
+    unless comment.end_user.id == current_end_user.id
+      redirect_to request.referer
+    end
   end
 end
